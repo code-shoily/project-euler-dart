@@ -5,7 +5,7 @@ import "dart:math";
 /// Find the sum of all the multiples of 3 or 5 below 1000.
 ///
 /// Here's the [link](https://projecteuler.net/problem=1)
-problem_1() => List<int>.generate(999, (i) => ++i)
+p1() => List<int>.generate(999, (i) => ++i)
     .where((i) => i % 3 == 0 || i % 5 == 0)
     .reduce((a, b) => a + b);
 
@@ -15,7 +15,7 @@ problem_1() => List<int>.generate(999, (i) => ++i)
 /// four million, find the sum of the even-valued terms.
 ///
 /// Here's the [link](https://projecteuler.net/problem=2)
-problem_2() => (([butLast = 1, last = 1]) sync* {
+problem2() => (([butLast = 1, last = 1]) sync* {
       while (last <= 4000000) {
         yield last;
         var temp = butLast;
@@ -31,7 +31,7 @@ problem_2() => (([butLast = 1, last = 1]) sync* {
 /// What is the largest prime factor of the number 600851475143 ?
 ///
 /// Here's the [link](https://projecteuler.net/problem=3)
-problem_3() {
+p3() {
   int n = 600851475143, i = 2;
 
   while (i * i <= n)
@@ -48,7 +48,7 @@ problem_3() {
 /// Find the largest palindrome made from the product of two 3-digit numbers.
 ///
 /// Here's the [link](https://projecteuler.net/problem=4)
-problem_4() {
+p4() {
   bool isPalindrome(int original) {
     int reversed = 0;
     int temp = original;
@@ -79,8 +79,8 @@ problem_4() {
 /// numbers from 1 to 20?
 ///
 /// Here's the [link](https://projecteuler.net/problem=5)
-problem_5() {
-  allBelowDivides(int number, limit) => List<int>.generate(limit, (i) => i + 1)
+p5() {
+  divisibleByAll(int number, limit) => List<int>.generate(limit, (i) => i + 1)
       .map((i) => number % i)
       .reduce((a, b) => a + b);
 
@@ -88,7 +88,7 @@ problem_5() {
     var i = limit;
 
     while (true) {
-      if (allBelowDivides(i, limit) == 0) return i;
+      if (divisibleByAll(i, limit) == 0) return i;
       i += limit;
     }
   })(20);
@@ -100,8 +100,7 @@ problem_5() {
 /// one hundred natural numbers and the square of the sum.
 ///
 /// Here's the [link](https://projecteuler.net/problem=6)
-problem_6() =>
-    (pow(List<int>.generate(100, (i) => i + 1).reduce((a, b) => a + b), 2) -
-        List<int>.generate(100, (i) => i + 1)
-            .map((n) => n * n)
-            .reduce((a, b) => a + b));
+p6() => (pow(List<int>.generate(100, (i) => i + 1).reduce((a, b) => a + b), 2) -
+    List<int>.generate(100, (i) => i + 1)
+        .map((n) => n * n)
+        .reduce((a, b) => a + b));
