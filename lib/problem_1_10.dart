@@ -104,3 +104,21 @@ p6() => (pow(List<int>.generate(100, (i) => i + 1).reduce((a, b) => a + b), 2) -
     List<int>.generate(100, (i) => i + 1)
         .map((n) => n * n)
         .reduce((a, b) => a + b));
+
+/// Solution of Project Euler Problem 7
+///
+/// What is the 10 001st prime number?
+///
+/// Here's the [link](https://projecteuler.net/problem=7)
+p7() {
+  bool isPrime(int n) {
+    if (n % 2 == 0) return n == 2;
+    for (var i = 3; i * i <= n; i += 2) if (n % i == 0) return false;
+    return true;
+  }
+
+  int nth = 0, i = 0;
+  while (nth <= 10001) if (isPrime(++i)) ++nth;
+
+  return i;
+}
